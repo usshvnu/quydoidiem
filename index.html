@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ứng dụng Quy đổi Điểm thi THPT & ĐGNL</title>
+    <title>Ứng dụng quy đổi tương đương mức điểm trúng tuyển giữa các phương thức xét tuyển - USSH VNU </title>
     <!-- Tích hợp Tailwind CSS để giao diện đẹp hơn -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font chữ Inter từ Google Fonts -->
@@ -28,7 +28,7 @@
         <!-- Tiêu đề ứng dụng -->
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQGHN</h1>
-            <p class="text-gray-500 mt-2">Quy đổi giữa điểm thi TN THPT và ĐGNL (HSA)</p>
+            <p class="text-gray-500 mt-2">Quy đổi tương đương mức điểm trúng tuyển giữa phương thức xét tuyển PT401 (sử dụng kết quả thi ĐGNL của ĐHQGHN – HSA)  và PT100 (sử dụng kết quả thi TN THPT)</p>
         </div>
 
         <!-- Form nhập liệu -->
@@ -39,11 +39,11 @@
                 <div class="flex space-x-4">
                     <label class="flex items-center">
                         <input type="radio" name="majorGroup" value="general" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" checked>
-                        <span class="ml-2 text-gray-700">Nhóm ngành chung</span>
+                        <span class="ml-2 text-gray-700">Nhóm ngành chung (Tổ hợp gốc: C00)</span>
                     </label>
                     <label class="flex items-center">
                         <input type="radio" name="majorGroup" value="special" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <span class="ml-2 text-gray-700">Đông Nam Á học / Nhật Bản học</span>
+                        <span class="ml-2 text-gray-700">Đông Nam Á học / Nhật Bản học (Tổ hợp gốc: D01)</span>
                     </label>
                 </div>
             </div>
@@ -53,15 +53,15 @@
                 <div>
                     <label for="fromScale" class="block text-sm font-medium text-gray-700 mb-1">Từ điểm:</label>
                     <select id="fromScale" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                        <option value="hsa">ĐGNL (HSA)</option>
-                        <option value="thpt">TN THPT</option>
+                        <option value="hsa">ĐGNL (HSA) - PT401</option>
+                        <option value="thpt">Tốt nghiệp THPT - PT100</option>
                     </select>
                 </div>
                 <div>
                     <label for="toScale" class="block text-sm font-medium text-gray-700 mb-1">Sang điểm:</label>
                     <select id="toScale" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
-                        <option value="thpt">TN THPT</option>
-                        <option value="hsa">ĐGNL (HSA)</option>
+                        <option value="thpt">Tốt nghiệp THPT - PT100</option>
+                        <option value="hsa">ĐGNL (HSA) - PT401</option>
                     </select>
                 </div>
             </div>
