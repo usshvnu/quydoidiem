@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cổng Thông Tin Hội Nghị Phụ Huynh K70</title>
+    <title>Hội Nghị Phụ Huynh K70</title>
     <style>
-        /* Thiết lập cơ bản */
+        /* --- THIẾT LẬP CƠ BẢN --- */
         :root {
-            --primary-color: #0078d4; /* Màu chủ đạo (Xanh Zoom) */
-            --hover-color: #005a9e;
+            --primary-color: #0078d4;
             --bg-color: #f0f2f5;
             --text-color: #333;
+            --live-color: #ff0000;
         }
 
         body {
@@ -21,80 +21,103 @@
             color: var(--text-color);
         }
 
-        /* Khung chính */
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        /* Tiêu đề */
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
+        h1 { color: var(--primary-color); margin-bottom: 5px; font-size: 1.8rem; }
+        p.subtitle { font-size: 1rem; color: #666; margin-bottom: 20px; }
 
-        p.subtitle {
-            font-size: 1.1rem;
-            color: #666;
+        /* --- PHẦN LIVESTREAM --- */
+        .live-container {
+            position: relative;
             margin-bottom: 30px;
+            border: 2px solid var(--live-color); /* Viền đỏ báo hiệu Live */
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        /* Lưới chứa các nút (Grid Layout) */
+        /* Nhãn ĐANG TRỰC TIẾP nhấp nháy */
+        .live-badge {
+            background-color: var(--live-color);
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Tỉ lệ 16:9 */
+            height: 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- LƯỚI ZOOM --- */
         .grid-links {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
         }
 
-        /* Nút bấm Link Zoom */
         .zoom-btn {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             background-color: white;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 15px;
-            border-radius: 10px;
+            border: 1px solid #ddd;
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--text-color);
+            padding: 15px 5px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: all 0.2s ease;
         }
 
-        /* Hiệu ứng khi di chuột vào */
         .zoom-btn:hover {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0,120,212,0.3);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
         }
 
-        /* Icon (dùng emoji cho đơn giản, không cần load thư viện) */
-        .icon {
-            margin-right: 10px;
-            font-size: 1.4rem;
-        }
+        .icon { font-size: 1.5rem; margin-bottom: 5px; }
 
-        /* Hướng dẫn cuối trang */
         .footer-note {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 0.9rem;
             color: #777;
             border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-
-        /* Responsive cho màn hình nhỏ */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.5rem; }
-            .container { padding: 20px 15px; }
+            padding-top: 15px;
         }
     </style>
 </head>
@@ -102,53 +125,40 @@
 
     <div class="container">
         <h1>HỘI NGHỊ PHỤ HUYNH K70</h1>
-        <p class="subtitle">Kính mời Quý phụ huynh chọn lớp của con em mình để tham gia phòng họp trực tuyến.</p>
+        
+        <div class="live-badge">🔴 Đang Trực Tiếp</div>
+        <p class="subtitle">Video phát trực tiếp từ hội trường chính</p>
+
+        <div class="live-container">
+            <div class="video-wrapper">
+                <iframe 
+                    width="560" height="315" 
+                    src="https://www.youtube.com/watch?v=V_s8etyl_ws" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <p class="subtitle" style="margin-top: 20px; font-weight: bold;">Hoặc chọn phòng họp riêng:</p>
 
         <div class="grid-links">
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A1
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A2
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A3
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A4
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A5
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A6
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A7
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A8
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A9
-            </a>
-
-            <a href="#" class="zoom-btn" target="_blank">
-                <span class="icon">🎥</span> Lớp K70 - A10
-            </a>
-            </div>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">1️⃣</span> Phòng 1</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">2️⃣</span> Phòng 2</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">3️⃣</span> Phòng 3</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">4️⃣</span> Phòng 4</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">5️⃣</span> Phòng 5</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">6️⃣</span> Phòng 6</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">7️⃣</span> Phòng 7</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">8️⃣</span> Phòng 8</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">9️⃣</span> Phòng 9</a>
+            <a href="#" class="zoom-btn" target="_blank"><span class="icon">🔟</span> Phòng 10</a>
+        </div>
 
         <div class="footer-note">
-            <p><strong>Lưu ý:</strong> Vui lòng đặt tên theo cú pháp: <em>[Tên con] - [Tên phụ huynh]</em> khi tham gia phòng họp.</p>
-            <p>Nếu gặp sự cố kỹ thuật, vui lòng liên hệ Hotline nhà trường.</p>
+            <p>Sự kiện đang diễn ra trực tiếp.</p>
         </div>
     </div>
 
