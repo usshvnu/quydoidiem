@@ -3,204 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quy đổi tương đương điểm trúng tuyển giữa phương thức xét tuyển PT401 và PT100 - Trường Đại học Khoa học Xã hội và Nhân văn, ĐHQGHN</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Cổng Thông Tin Hội Nghị Phụ Huynh K70</title>
     <style>
+        /* Thiết lập cơ bản */
+        :root {
+            --primary-color: #0078d4; /* Màu chủ đạo (Xanh Zoom) */
+            --hover-color: #005a9e;
+            --bg-color: #f0f2f5;
+            --text-color: #333;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+
+        /* Khung chính */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
         }
-        .tab-active {
-            background-color: #4f46e5;
+
+        /* Tiêu đề */
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Lưới chứa các nút (Grid Layout) */
+        .grid-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        /* Nút bấm Link Zoom */
+        .zoom-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Hiệu ứng khi di chuột vào */
+        .zoom-btn:hover {
+            background-color: var(--primary-color);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,120,212,0.3);
         }
-        .tab-inactive {
-            background-color: #eef2ff;
-            color: #4f46e5;
+
+        /* Icon (dùng emoji cho đơn giản, không cần load thư viện) */
+        .icon {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* Hướng dẫn cuối trang */
+        .footer-note {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* Responsive cho màn hình nhỏ */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .container { padding: 20px 15px; }
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+<body>
 
-    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-6 md:p-8">
-        
-        <div class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">TRƯỜNG ĐẠI HỌC KHOA HỌC XÃ HỘI VÀ NHÂN VĂN, ĐHQGHN</h1>
-            <p class="text-gray-500 mt-2">Quy đổi tương đương điểm trúng tuyển giữa phương thức xét tuyển PT401 (ĐGNL - HSA) và PT100 (Thi TN THPT) tổ hợp C00 & D01</p>
-        </div>
+    <div class="container">
+        <h1>HỘI NGHỊ PHỤ HUYNH K70</h1>
+        <p class="subtitle">Kính mời Quý phụ huynh chọn lớp của con em mình để tham gia phòng họp trực tuyến.</p>
 
-        <!-- Input Section -->
-        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="md:col-span-1">
-                     <label for="inputHSA" class="block text-sm font-medium text-gray-700 mb-1">Điểm ĐGNL (HSA)</label>
-                    <input type="number" id="inputHSA" placeholder="Nhập điểm HSA (31-130)" class="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
-                </div>
-                <div class="md:col-span-1">
-                    <label for="comboSelect" class="block text-sm font-medium text-gray-700 mb-1">Tổ hợp</label>
-                    <select id="comboSelect" class="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 h-[54px]">
-                        <option value="c00">Tổ hợp C00</option>
-                        <option value="d01">Tổ hợp D01</option>
-                    </select>
-                </div>
-                <div class="md:col-span-1 flex items-end">
-                    <button id="convertBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg px-8 py-3 rounded-lg transition duration-200 transform hover:scale-105">
-                        Quy đổi
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Result Section -->
-        <div id="result" class="hidden min-h-[100px] bg-green-50 rounded-lg p-6 mb-6 border border-green-200 text-center">
-            <p class="text-lg text-green-800">Điểm quy đổi tương đương là:</p>
-            <p id="resultScore" class="text-5xl font-bold text-green-600 my-2">-</p>
-            <div id="errorMessage" class="text-red-500 font-semibold text-center mt-2"></div>
-        </div>
+        <div class="grid-links">
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A1
+            </a>
 
-        <!-- Conversion Tables Section -->
-        <div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">PHÂN VỊ TƯƠNG ĐƯƠNG GIỮA ĐIỂM THI ĐÁNH GIÁ NĂNG LỰC (HSA) VÀ TỔ HỢP ĐIỂM THI TỐT NGHIỆP TRUNG HỌC PHỔ THÔNG</h3>
-            <!-- Tabs -->
-            <div class="mb-4">
-                <button id="tabC00" class="tab-button tab-active py-2 px-4 rounded-t-lg font-semibold">Bảng HSA - C00</button>
-                <button id="tabD01" class="tab-button tab-inactive py-2 px-4 rounded-t-lg font-semibold">Bảng HSA - D01</button>
-            </div>
-            <!-- Tables -->
-            <div id="tableC00" class="tab-content overflow-y-auto max-h-64 rounded-lg border border-gray-200">
-                 <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-100 sticky top-0">
-                        <tr>
-                            <th class="px-6 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Điểm HSA</th>
-                            <th class="px-6 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Điểm TH C00</th>
-                        </tr>
-                    </thead>
-                    <tbody id="conversionTableBodyC00" class="bg-white divide-y divide-gray-200"></tbody>
-                </table>
-            </div>
-            <div id="tableD01" class="tab-content hidden overflow-y-auto max-h-64 rounded-lg border border-gray-200">
-                 <table class="min-w-full divide-y divide-gray-200">
-                     <thead class="bg-gray-100 sticky top-0">
-                        <tr>
-                            <th class="px-6 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Điểm HSA</th>
-                            <th class="px-6 py-3 text-center text-xs font-bold text-gray-600 uppercase tracking-wider">Điểm TH D01</th>
-                        </tr>
-                    </thead>
-                    <tbody id="conversionTableBodyD01" class="bg-white divide-y divide-gray-200"></tbody>
-                </table>
-            </div>
-        </div>
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A2
+            </a>
 
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A3
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A4
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A5
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A6
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A7
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A8
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A9
+            </a>
+
+            <a href="#" class="zoom-btn" target="_blank">
+                <span class="icon">🎥</span> Lớp K70 - A10
+            </a>
+            </div>
+
+        <div class="footer-note">
+            <p><strong>Lưu ý:</strong> Vui lòng đặt tên theo cú pháp: <em>[Tên con] - [Tên phụ huynh]</em> khi tham gia phòng họp.</p>
+            <p>Nếu gặp sự cố kỹ thuật, vui lòng liên hệ Hotline nhà trường.</p>
+        </div>
     </div>
 
-    <script>
-        // Data from the provided document
-        const hsaToC00 = {
-            130: 29.50, 129: 29.49, 128: 29.47, 127: 29.46, 126: 29.41, 125: 29.36, 124: 29.28, 123: 29.26, 122: 29.25, 121: 29.17, 120: 29.08, 119: 29.06, 118: 29.05, 117: 29.03, 116: 29.02, 115: 29.00, 114: 28.78, 113: 28.76, 112: 28.75, 111: 28.54, 110: 28.53, 109: 28.51, 108: 28.50, 107: 28.27, 106: 28.25, 105: 28.25, 104: 28.04, 103: 28.02, 102: 28.00, 101: 27.76, 100: 27.75, 99: 27.53, 98: 27.52, 97: 27.50, 96: 27.26, 95: 27.25, 94: 27.04, 93: 27.03, 92: 27.00, 91: 26.76, 90: 26.75, 89: 26.51, 88: 26.50, 87: 26.27, 86: 26.25, 85: 26.03, 84: 26.00, 83: 25.76, 82: 25.75, 81: 25.52, 80: 25.50, 79: 25.25, 78: 25.03, 77: 25.00, 76: 24.75, 75: 24.52, 74: 24.50, 73: 24.25, 72: 24.00, 71: 23.75, 70: 23.50, 69: 23.25, 68: 23.00, 67: 22.85, 66: 22.60, 65: 22.35, 64: 22.10, 63: 21.85, 62: 21.60, 61: 21.25, 60: 21.00, 59: 20.75, 58: 20.35, 57: 20.00, 56: 19.75, 55: 19.35, 54: 19.00, 53: 18.70, 52: 18.28, 51: 17.85, 50: 17.49, 49: 17.20, 48: 16.95, 47: 16.60, 46: 16.35, 45: 16.25, 44: 15.82, 43: 15.61, 42: 15.17, 41: 15.04, 40: 14.75, 39: 14.30, 38: 14.18, 37: 14.04, 36: 13.32, 35: 12.52, 34: 12.11, 31: 12.00
-        };
-        const hsaToD01 = {
-            130: 27.75, 129: 27.75, 128: 27.66, 127: 27.57, 126: 27.55, 125: 27.52, 124: 27.50, 123: 27.27, 122: 27.26, 121: 27.25, 120: 27.05, 119: 27.00, 118: 26.75, 117: 26.75, 116: 26.52, 115: 26.50, 114: 26.27, 113: 26.25, 112: 26.00, 111: 25.76, 110: 25.75, 109: 25.52, 108: 25.50, 107: 25.27, 106: 25.25, 105: 25.00, 104: 24.76, 103: 24.75, 102: 24.50, 101: 24.26, 100: 24.25, 99: 24.00, 98: 24.00, 97: 23.75, 96: 23.52, 95: 23.50, 94: 23.25, 93: 23.01, 92: 23.00, 91: 22.75, 90: 22.70, 89: 22.50, 88: 22.26, 87: 22.25, 86: 22.00, 85: 21.75, 84: 21.75, 83: 21.50, 82: 21.35, 81: 21.25, 80: 21.02, 79: 21.00, 78: 20.75, 77: 20.54, 76: 20.50, 75: 20.25, 74: 20.02, 73: 20.00, 72: 19.75, 71: 19.50, 70: 19.35, 69: 19.25, 68: 19.00, 67: 18.75, 66: 18.60, 65: 18.50, 64: 18.25, 63: 18.00, 62: 17.75, 61: 17.60, 60: 17.50, 59: 17.25, 58: 17.00, 57: 16.75, 56: 16.50, 55: 16.25, 54: 16.00, 53: 15.75, 52: 15.50, 51: 15.27, 50: 15.10, 49: 14.85, 48: 14.60, 47: 14.35, 46: 14.10, 45: 13.85, 44: 13.50, 43: 13.35, 42: 13.00, 41: 12.75, 40: 12.60, 39: 12.35, 38: 12.11, 37: 11.60, 36: 11.35, 35: 11.17, 34: 10.94, 31: 10.87
-        };
-        
-        // DOM Elements
-        const inputHSA = document.getElementById('inputHSA');
-        const comboSelect = document.getElementById('comboSelect');
-        const convertBtn = document.getElementById('convertBtn');
-        const resultDiv = document.getElementById('result');
-        const resultScoreEl = document.getElementById('resultScore');
-        const errorMessageDiv = document.getElementById('errorMessage');
-        
-        const tabC00 = document.getElementById('tabC00');
-        const tabD01 = document.getElementById('tabD01');
-        const tableC00 = document.getElementById('tableC00');
-        const tableD01 = document.getElementById('tableD01');
-        
-        // Populate tables function
-        function populateTable(tableBodyId, data) {
-            const tableBody = document.getElementById(tableBodyId);
-            tableBody.innerHTML = '';
-            // Sort HSA scores in descending order for display
-            const sortedKeys = Object.keys(data).map(Number).sort((a, b) => b - a);
-            
-            sortedKeys.forEach(hsaScore => {
-                const convertedScore = data[hsaScore];
-                const row = `
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-800 text-center">${hsaScore}</td>
-                        <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-600 text-center">${convertedScore.toFixed(2)}</td>
-                    </tr>
-                `;
-                tableBody.innerHTML += row;
-            });
-        }
-        
-        // Convert score function
-        function convertScore() {
-            const scoreStr = inputHSA.value;
-            if (scoreStr === '') {
-                showError("Vui lòng nhập điểm HSA.");
-                return;
-            }
-            
-            const score = parseInt(scoreStr, 10);
-            const selectedCombo = comboSelect.value;
-            
-            const data = selectedCombo === 'c00' ? hsaToC00 : hsaToD01;
-            
-            if (data[score] !== undefined) {
-                showResult(data[score]);
-            } else {
-                showError("Không có điểm quy đổi cho mức điểm HSA này. Vui lòng tham khảo bảng bên dưới.");
-            }
-        }
-
-        function showResult(score) {
-            resultDiv.classList.remove('hidden');
-            resultScoreEl.textContent = score.toFixed(2);
-            errorMessageDiv.textContent = '';
-        }
-        
-        function showError(message) {
-            resultDiv.classList.remove('hidden');
-            resultScoreEl.textContent = 'Lỗi!';
-            errorMessageDiv.textContent = message;
-        }
-
-        // Tab switching logic
-        function switchTab(activeTab) {
-            if (activeTab === 'c00') {
-                tabC00.classList.replace('tab-inactive', 'tab-active');
-                tabD01.classList.replace('tab-active', 'tab-inactive');
-                tableC00.classList.remove('hidden');
-                tableD01.classList.add('hidden');
-            } else {
-                tabD01.classList.replace('tab-inactive', 'tab-active');
-                tabC00.classList.replace('tab-active', 'tab-inactive');
-                tableD01.classList.remove('hidden');
-                tableC00.classList.add('hidden');
-            }
-        }
-
-        // Event Listeners
-        convertBtn.addEventListener('click', convertScore);
-        inputHSA.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                convertScore();
-            }
-        });
-        tabC00.addEventListener('click', () => switchTab('c00'));
-        tabD01.addEventListener('click', () => switchTab('d01'));
-
-        // Initial setup
-        window.onload = () => {
-            populateTable('conversionTableBodyC00', hsaToC00);
-            populateTable('conversionTableBodyD01', hsaToD01);
-        };
-    </script>
 </body>
 </html>
